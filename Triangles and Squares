@@ -1,0 +1,35 @@
+include<iostream>
+include<iomanip>
+using namespace std;
+
+int main(){
+    int length;
+    cout << "Length : ";
+    cin >> length;
+    char symbol;
+    cout << "Symbol : ";
+    cin >> symbol;
+
+    for (int i = 0; i <= length; i++) {
+        for (int w = 0; w <= i; w++) {
+            cout << setw(3) << symbol;
+        }
+    }
+
+    int length, width;
+    cout << "Length : ";
+    cin >> length;
+    cout << "Width : ";
+    cin >> width;
+    char symbol;
+    cout << "Symbol : ";
+    cin >> symbol;
+
+    for (int i = 0; i <= length; i++) {
+        for (int w = 0; w <= width; w++) {
+            cout << setw(3) << symbol;
+        }
+    }
+    system("pause>0");
+    return 0;
+}
