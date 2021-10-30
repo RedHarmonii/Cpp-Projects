@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+
+    int userpin = 1234, pin, counter = 0;
+ 
+
+    do {
+        cout << "Enter Pin : ";
+        cin >> pin;
+        if (pin != userpin) {
+            counter++;
+        }
+       
+    } while (pin != userpin && counter < 3);
+
+    if (counter < 3) {
+        cout << "Correct! Welcome.";
+    }
+    else {
+        cout << "Blocked! ";
+    }
+    system("pause>0);
+    return 0;
+}
