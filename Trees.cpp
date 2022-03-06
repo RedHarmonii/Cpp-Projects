@@ -17,14 +17,15 @@ Node*makeNode(int data){
     return newNode;
 }
 
-Node* insertNode(Node*head, int data){
+Node* insertNode(Node*head, int data){// This function uses Recursion to Insert
     if(head == NULL){head = makeNode(data);}
     if(data <= head->data){insertNode(head->left,data);}else{
         head->right = insertNode(head->right,data);
     }
     return head;
 }
-bool SearchNode(Node*head,int data){
+
+bool SearchNode(Node*head,int data){// This function uses Recursion to Search
     if(head == NULL) return false;
     else if(head->data == data){return true;}
     else if(data <= head->data) return SearchNode(head->left,data);
@@ -47,7 +48,7 @@ Node* search(Node*head, int data){
         Node*temp = q.front();
         q.pop();
         if(temp->left != NULL){q.push(temp->left);}
-        if(temp->data == data){out = temp;cout << " HIT " << endl;}
+        if(temp->data == data){out = temp;cout << " Data Found : "<< endl;}
         if(temp->right != NULL){q.push(temp->right);}
     }
     return out;
@@ -82,12 +83,13 @@ void insert(Node*head, int data){
     }
 }
 
-Node* minNode(Node*head){
+Node* minNode(Node*head){// This function id used in DeleteNode
     while(head->left != NULL){
                 head = head->left;
             }
             return head;
 }
+
 Node* DeleteNode(Node* head, int data) {
     if(head == NULL){return NULL;}
     else if(data < head->data){head->left = DeleteNode(head->left, data);}
@@ -117,43 +119,6 @@ Node* DeleteNode(Node* head, int data) {
     return head;
 }
 
-int treeSum(Node*root){
-
-    if(root == NULL){return 0;}
-
-    int leftSum = treeSum(root->left);
-    int rightSum = treeSum(root->right);
-
-    return root->data + leftSum + rightSum;
-}
-
-int maxValue(Node *root){
-    if(root == NULL){return 0;}
-    int max = 0; 
-    queue<Node*> q;
-    q.push(root);
-    while(q.size()> 0){
-        Node*temp = q.front();
-        q.pop();
-        if(temp->left != NULL){q.push(temp->left);}
-        if(temp->right != NULL){q.push(temp->right);}
-        if(temp->data > max){max = temp->data;}
-
-    }
-    /*while(root->right != NULL){
-        root = root->right->data;
-        if(root > max){max = root;}
-    }*/
-    /*do{
-        root = root->right;
-        if(root->right->data > max){max = root->right->data;}
-    }while(root->right != NULL);*/
-
-    return max;
-}
-
-
-
 int main(){
     //Trees : recursive data structures. root and subtrees. root,parent, children,siblings, leaf and internal.
     // N nodes has n - 1 edges. depth of node : length of path Height: no. of edges in longest path  
@@ -172,11 +137,6 @@ int main(){
     root->right = makeNode(20);
     root->right->right = makeNode(25);
     root->right->left = makeNode(15);
-
-    int maxNum;
-    maxNum = maxValue(root);
-    cout << maxNum << endl;
-    
 
     system("pause>0");
     return 0;
